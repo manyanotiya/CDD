@@ -3,23 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>contact us</title>
+    <title>Contact Us</title>
     <style>
-        div{
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url("agrimage.jpg") no-repeat center center/cover;
+            height: 100vh;
             display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .contact-container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
             text-align: center;
-            justify-content: space-around;
-            
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .contact-container a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .contact-container a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div>
-        <ul>h</ul>
-        <ul>e</ul>
-        <ul>l</ul>
-        <ul>l</ul>
-        <ul>0</ul>
+    <div class="contact-container">
+        <h2>Contact Us</h2>
+        <p><strong>Email:</strong> cropcare@example.com</p>
+        <p><strong>Phone:</strong> +91 9109319908</p>
+        <p><strong>Address:</strong> SGSITS, Indore, M.P</p>
+        <p><a href="mailto:contact@example.com">Send us an Email</a></p>
     </div>
 </body>
 </html>
