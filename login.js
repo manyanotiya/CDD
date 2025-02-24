@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
+<<<<<<< HEAD
     // ✅ Check if user is already logged in
     if (localStorage.getItem("loggedIn") === "false") {
+=======
+    // Check if user is already logged in
+    if (localStorage.getItem("loggedIn") === "true") {
+>>>>>>> 3863c7c11ae44d5dfd38f2ffdcbaf166baec8c44
         window.location.href = "upload.html"; // Redirect to upload page
     }
 });
