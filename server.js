@@ -1,3 +1,30 @@
+const express = require("express");
+const mysql = require("mysql");
+const bcrypt = require("bcryptjs");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+
+const port = 5000;
+
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
+
+// Database Connection
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "root", // Change if your MySQL has a password
+    database: "crop_login",
+});
+
+db.connect((err) => {
+    if (err) {
+        console.error("Database connection failed:", err);
+    } else {
+        console.log("Connected to MySQL Database");
+    }
+});
 app.post('/signup', async (req, res) => {
     const { email, password } = req.body;
 
@@ -17,4 +44,8 @@ app.post('/signup', async (req, res) => {
         console.error(error);
         res.status(500).json({ message: "Something went wrong" });
     }
+});
+
+app.listen(5000, () => {
+    console.log("Server is running on port 5000");
 });
