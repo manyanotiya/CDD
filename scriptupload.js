@@ -1,92 +1,66 @@
-// document.addEventListener("DOMContentLoaded", function () {
-//     const fileInput = document.getElementById("fileUpload");
-//     const detectButton = document.getElementById("detectBtn");
-
-//     // File upload event
-//     fileInput.addEventListener("change", function () {
-//         if (fileInput.files.length > 0) {
-//             alert("File selected: " + fileInput.files[0].name);
-//         }
-//     });
-
-//     // Disease Detection Simulation
-//     function detectDisease() {
-//         if (fileInput.files.length === 0) {
-//             alert("Please upload an image first.");
-//         } else {
-//             alert("Processing image... (Disease detection feature coming soon!)");
-//         }
-//     }
-
-//     // Attach function to button
-//     detectButton.addEventListener("click", detectDisease);
-// });
-
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     console.log("Page loaded, checking for logout button..."); // Debugging
-
-//     let logoutBtn = document.getElementById("logoutBtn");
-
-//     if (logoutBtn) {
-//         // ✅ Remove existing event listener before adding a new one
-
-//         logoutBtn.addEventListener("click", logoutFunction);
-//     } else {
-//         console.error("Logout button NOT found! Check your HTML.");
-//     }
-// });
-
-// function logoutFunction() {
-//     console.log("Logout button clicked!"); // Debugging
-
-//     let confirmLogout = confirm("Are you sure you want to log out?");
-    
-//     if (confirmLogout) {
-//         console.log("Logging out..."); // Debugging
-//         localStorage.removeItem("loggedIn"); // Remove login status
-//         window.location.href = "home.html"; // Redirect to login page
-//     } else {
-//         console.log("Logout canceled!"); // Debugging
-//     }
-// }
-
-
-// Function to check if user is logged in
+// Check if user is logged in
 function isLoggedIn() {
-    return localStorage.getItem("loggedInUser") !== null;
+    return localStorage.getItem("loggedIn") === "true";
 }
 
 // Handle Upload Button Click
-document.getElementById("uploadBtn").addEventListener("click", function () {
+document.addEventListener("DOMContentLoaded", function () {
+    // Check login on page load
     if (!isLoggedIn()) {
-        // Redirect to login page if not logged in
         alert("You must log in first!");
         window.location.href = "login.html";
-    } else {
-        // Allow file selection if logged in
-        document.getElementById("fileInput").click();
     }
-});
 
-// Simulate login process
-document.addEventListener("DOMContentLoaded", function () {
-    const loginForm = document.querySelector("form");
-    if (loginForm) {
-        loginForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-            localStorage.setItem("loggedInUser", "user@example.com");
-            alert("Login successful!");
-            window.location.href = "upload.html"; // Redirect to upload after login
+    // Upload Button
+    const uploadBtn = document.getElementById("uploadBtn");
+    const fileInput = document.getElementById("fileUpload");
+    const detectButton = document.getElementById("detectBtn");
+
+    if (uploadBtn && fileInput) {
+        uploadBtn.addEventListener("click", function () {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener("change", function () {
+            if (fileInput.files.length > 0) {
+                alert("File selected: " + fileInput.files[0].name);
+            }
         });
     }
-});
 
-// Contact Popup Logic
-document.getElementById('contact-btn').addEventListener('click', function () {
-    document.getElementById('contact-popup').style.display = 'block';
-});
+    // Disease Detection Simulation
+    if (detectButton) {
+        detectButton.addEventListener("click", function () {
+            if (fileInput.files.length === 0) {
+                alert("Please upload an image first.");
+            } else {
+                alert("Processing image... (Disease detection feature coming soon!)");
+            }
+        });
+    }
 
-document.querySelector('.close-btn').addEventListener('click', function () {
-    document.getElementById('contact-popup').style.display = 'none';
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", function () {
+            const confirmLogout = confirm("Are you sure you want to log out?");
+            if (confirmLogout) {
+                localStorage.removeItem("loggedIn");
+                window.location.href = "login.html";
+            }
+        });
+    }
+
+    // Contact Popup Logic
+    const contactBtn = document.getElementById('contact-btn');
+    const closeBtn = document.querySelector('.close-btn');
+
+    if (contactBtn && closeBtn) {
+        contactBtn.addEventListener('click', function () {
+            document.getElementById('contact-popup').style.display = 'block';
+        });
+
+        closeBtn.addEventListener('click', function () {
+            document.getElementById('contact-popup').style.display = 'none';
+        });
+    }
 });
