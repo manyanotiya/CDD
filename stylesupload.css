@@ -1,47 +1,10 @@
-
-
+/* General Styles */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: url('agrimage.jpg') no-repeat center center/cover;
+    background: #f4f4f4;
 }
-
-.content {
-    flex: 1;
-}
-
-.footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    width: 100%;
-    position: relative;
-
-    bottom: 0;
-} 
-
-.content {
-    flex: 1;
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    color: white;
-}
-
-.footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    width: 100%;
-    position: relative;
-}
-
 
 /* Navigation Bar */
 .navbar {
@@ -70,38 +33,34 @@ body {
     font-weight: bold;
 }
 
-/* .nav-links a.active {
+.nav-links a.active {
     border-bottom: 2px solid #f39c12;
-} */
-
-
-.logo {
-    font-size: 24px;
-    color: white;
-    font-weight: bold;
+}
+/* upload.css */
+body {
+    background: url('agrimage.jpg') no-repeat center center/cover;
 }
 
- 
-
-/* Hero Section */
 .hero {
-    position: relative;
-    width: 100%;
     height: 100vh;
-   
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Upload Box */
 .upload-box {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 25px;
-    border-radius: 10px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    width: 400px; /* 🔥 Reduce width */
+    margin: 60px auto;
     text-align: center;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
+
 
 .upload-box h2 {
     margin-bottom: 15px;
@@ -129,70 +88,11 @@ body {
     background-color: #1B4332;
 }
 
-#headline{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10%;
-    background: rgba(0, 0, 1, 0.3);
-    color: white;
-}
-
-#para{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    margin-top: 0;
-    padding-bottom: 32px;
-    background: rgba(0, 0, 1, 0.3);
-    color: white;
-}
-/* #btn{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(80, 215, 46, 0.811);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 11px;} */
-
-#btn:hover{
-    background-color: rgba(44, 173, 11, 0.99) ;
-}
-a{
-    text-decoration: none;
-    color: azure;
-}
-
-/* #logoutBtn{
-  background: #6CA82B;
-  border: none;
-  font-size: 18px;
-  margin: 0px;
-  padding: 0px;
-} */
-
-#logoutBtn:hover{
-    cursor: pointer;
-}
-
-.footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    position: relative;
-    bottom: 0;
+.upload-box select {
     width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
 }
-.footer a {
-    color: #f8b400;
-    text-decoration: none;
-}
-.footer a:hover {
-    text-decoration: underline;
-}
+

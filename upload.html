@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CropCare</title>
+    <link rel="stylesheet" href="commonstyle.css">
     <link rel="stylesheet" href="stylesupload.css">
+    
 </head>
 <body>
 
@@ -13,7 +15,7 @@
         <div class="logo">CropCare 🌱</div>
         <ul class="nav-links">
 
-            <li><a href="home.html">Home</a></li>
+            <li><a href="homepage.html">Home</a></li>
             <li><a href="upload.html" style="color: #d03636ce;">Upload</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -23,19 +25,19 @@
     </nav>
     
     <!-- Hero Section with Background Image -->
-    <div class="hero">
-        <div class="upload-box">
-            <h2>Upload Crop Image</h2>
-            <input type="file" id="fileUpload">
-            <button id="detectBtn">Detect Disease</button>
-        </div>
+    <div class="upload-box">
+        <h2>Upload Crop Image</h2>
+    
+        <label for="cropType">Select Crop Type:</label>
+        <select id="cropType">
+            <option value="">-- Select Crop --</option>
+            <option value="tomato">Tomato Plant</option>
+            <option value="pea">Pea Plant</option>
+        </select>
+    
+        <input type="file" id="fileUpload" accept="image/*">
+        <button id="detectBtn">Detect Disease</button>
     </div>
-
-    
-
-    <script src="scriptupload.js"></script>
-    
-    
-
+        
 </body>
 </html>
