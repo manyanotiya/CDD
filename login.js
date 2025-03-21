@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Check if user is already logged in
-  if (localStorage.getItem("loggedIn") === "true") {
+  if (localStorage.getItem("loggedIn") === "false") {
       window.location.href = "upload.html";
   }
 

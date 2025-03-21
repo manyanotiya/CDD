@@ -5,7 +5,28 @@ body {
     font-family: Arial, sans-serif;
     background: #f4f4f4;
 }
+.home-header {
+    text-align: center;
+    background: url('agrimage.jpg') no-repeat center center/cover;
+    padding: 100px 20px;
+    position: relative;
+}
 
+.home-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.upload-box, .upload-box a {
+    position: relative;
+    z-index: 2;
+}
 /* Navigation Bar */
 .navbar {
     background-color: #2c3e50;
@@ -37,9 +58,6 @@ body {
     border-bottom: 2px solid #f39c12;
 }
 /* upload.css */
-body {
-    background: url('agrimage.jpg') no-repeat center center/cover;
-}
 
 .hero {
     height: 100vh;
