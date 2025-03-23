@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CropCare</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesupload.css') }}">
+    <link rel="stylesheet" href="{static\stylesupload.css}">
+
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">CropCare 🌱</div>
+        <ul class="nav-links">
+
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="upload.html" class="active">Upload</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><button id="logoutBtn">Logout</button></li>
+
+        </ul>
+    </nav>
+        
+    <!-- Hero Section with Background Image -->
+    <div class="home-header">
+    <div class="upload-box">
+        <h2>Upload Crop Image</h2>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <label for="cropType">Select Crop Type:</label>
+            <select id="cropType" name="model"> <!-- 'model' must match Flask -->
+                <option value="">-- Select Crop --</option>
+                <option value="pea">Pea Plant</option>
+                <option value="corn">Corn Plant</option> <!-- Changed from 'tomato' to 'corn' to match your backend -->
+            </select>
+        
+            <input type="file" id="fileUpload" name="file" accept="image/*" required>
+            <button type="submit" id="detectBtn">Detect Disease</button>
+        </form>
+
+    <div id="resultArea"></div>
+</body>
+</html>
