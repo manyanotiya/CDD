@@ -1,11 +1,18 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CropCare</title>
+
+    <script>
+        if (localStorage.getItem("loggedIn") !== "true") {
+            window.location.href = "login.html";
+        }
+    </script>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesupload.css') }}">
-    <script src="{{ url_for('static', filename='scriptupload.js') }}"></script>
+    <script src="{{ url_for('static', filename='scriptupload.js') }}" defer></script>
 </head>
 <body>
 
@@ -13,31 +20,32 @@
     <nav class="navbar">
         <div class="logo">CropCare 🌱</div>
         <ul class="nav-links">
-
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('upload') }}" class="active">Upload</a></li>
             <li><a href="{{ url_for('about') }}">About</a></li>
             <li><a href="{{ url_for('contact') }}">Contact</a></li>
-
         </ul>
     </nav>
-    
-    <!-- Hero Section with Background Image -->
+
+    <!-- Hero Section -->
     <div class="home-header">
-    <div class="upload-box">
-        <h2>Upload Crop Image</h2>
-        <form id="uploadForm" enctype="multipart/form-data">
-            <label for="cropType">Select Crop Type:</label>
-            <select id="cropType" name="model"> <!-- 'model' must match Flask -->
-                <option value="">-- Select Crop --</option>
-                <option value="pea">Pea Plant</option>
-                <option value="corn">Corn Plant</option> <!-- Changed from 'tomato' to 'corn' to match your backend -->
-            </select>
-        
-            <input type="file" id="fileUpload" name="file" accept="image/*" required>
-            <button type="submit" id="detectBtn">Detect Disease</button>
-        </form>
-        
-    <div id="resultArea"></div>
+        <div class="upload-box">
+            <h2>Upload Crop Image</h2>
+            <form id="uploadForm" method="POST" enctype="multipart/form-data">
+                <label for="cropType">Select Crop Type:</label>
+                <select id="cropType" name="model">
+                    <option value="">-- Select Crop --</option>
+                    <option value="pea">Pea Plant</option>
+                    <option value="corn">Corn Plant</option>
+                </select>
+
+                <input type="file" id="fileUpload" name="file" accept="image/*" required>
+                <button type="submit" id="detectBtn">Detect Disease</button>
+            </form>
+
+            <div id="resultArea"></div>
+        </div>
+    </div>
+
 </body>
-</html> 
+</html>

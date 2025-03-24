@@ -1,63 +1,65 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Check if user is already logged in
-  if (localStorage.getItem("loggedIn") === "false") {
-      window.location.href = "upload.html";
-  }
+    // Clear previous login data (optional but good practice)
+    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("userEmail");
 
-  document.getElementById("loginForm").addEventListener("submit", async function (event) {
-      event.preventDefault(); // Stop form from refreshing the page
+    // Already logged in? Redirect
+    if (localStorage.getItem("loggedIn") === "true") {
+        window.location.href = "upload.html";
+    }
 
-      let email = document.getElementById("email").value.trim();
-      let password = document.getElementById("password").value.trim();
-      let errorMessage = document.getElementById("errorMessage");
+    document.getElementById("loginForm").addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-      // Clear previous error
-      errorMessage.textContent = "";
+        let email = document.getElementById("email").value.trim();
+        let password = document.getElementById("password").value.trim();
+        let errorMessage = document.getElementById("errorMessage");
+        errorMessage.textContent = "";
 
-      // Basic validation
-      if (!email || !password) {
-          errorMessage.textContent = "All fields are required!";
-          return;
-      }
+        // Email validation
+        if (!email || !password) {
+            errorMessage.textContent = "All fields are required!";
+            return;
+        }
 
-      if (!email.includes("@") || !email.includes(".") || !email.includes("com")) {
-          errorMessage.textContent = "Enter a valid email!";
-          return;
-      }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            errorMessage.textContent = "Enter a valid email!";
+            return;
+        }
 
-      if (password.length < 6) {
-          errorMessage.textContent = "Password must be at least 6 characters!";
-          return;
-      }
+        if (password.length < 6) {
+            errorMessage.textContent = "Password must be at least 6 characters!";
+            return;
+        }
 
-      if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-          errorMessage.textContent = "Password must contain at least one special character!";
-          return;
-      }
+        if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+            errorMessage.textContent = "Password must contain at least one special character!";
+            return;
+        }
 
-      // All good? Send request to backend
-      try {
-          const response = await fetch("http://localhost:5001/login", {
-              method: "POST",
-              headers: {
-                  "Content-Type": "application/json"
-              },
-              body: JSON.stringify({ email, password })
-          });
+        try {
+            const response = await fetch("http://localhost:5001/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email, password })
+            });
 
-          const data = await response.json();
+            const data = await response.json();
 
-          if (response.ok && data.success) {
-              alert("Login successful!");
-              localStorage.setItem("loggedIn", "true");
-              window.location.href = "upload.html";
-          } else {
-              errorMessage.textContent = data.message || "Login failed. Check credentials.";
-          }
+            if (response.ok && data.success) {
+                alert("Login successful!");
+                localStorage.setItem("loggedIn", "true");
+                localStorage.setItem("userEmail", email);
+                window.location.href = "upload.html";
+            } else {
+                errorMessage.textContent = data.message || "Login failed. Check credentials.";
+            }
 
-      } catch (err) {
-          console.error("Login Error:", err);
-          errorMessage.textContent = "Something went wrong. Try again.";
-      }   
-  });
+        } catch (err) {
+            console.error("Login Error:", err);
+            errorMessage.textContent = "Something went wrong. Try again.";
+        }
+    });
 });
