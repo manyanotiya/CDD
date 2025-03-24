@@ -3,45 +3,6 @@ function isLoggedIn() {
     return localStorage.getItem("loggedIn") === "true";
 }
 
-// Handle Upload Button Click
-// document.addEventListener("DOMContentLoaded", function () {
-//     // Check login on page load
-//     if (!isLoggedIn()) {
-//         alert("You must log in first!");
-//         window.location.href = "login.html";
-//     }
-//     // Upload Button
-       const uploadBtn = document.getElementById("uploadBtn");
-//     const form = document.getElementById("uploadForm");
-//     const fileInput = document.getElementById("fileUpload");
-//     const detectButton = document.getElementById("detectBtn");
-//     form.addEventListener("submit", function (e) {
-//         e.preventDefault();
-
-//         const file = fileInput.files[0];
-//         const cropType = document.getElementById("cropType").value;
-
-//         if (!file || !cropType) {
-//             alert("Please select a crop type and upload an image.");
-//             return;
-//         }
-
-//         const formData = new FormData();
-//         formData.append("image", file);
-//         formData.append("cropType", cropType);
-
-//         fetch("http://localhost:5000/predict", {
-//             method: "POST",
-//             body: formData
-//         })
-//         .then(response => response.json())
-//         .then(data => {
-//             resultArea.innerHTML = `<h3>Disease Detected: ${data.result}</h3>`;
-//         })
-//         .catch(err => {
-//             console.error(err);
-//             resultArea.innerHTML = `<h3>Error detecting disease.</h3>`;
-//         });
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("uploadForm");
     const fileInput = document.getElementById("fileUpload");

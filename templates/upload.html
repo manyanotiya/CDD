@@ -14,11 +14,10 @@
         <div class="logo">CropCare 🌱</div>
         <ul class="nav-links">
 
-            <li><a href="homepage.html">Home</a></li>
-            <li><a href="upload.html" class="active">Upload</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><button id="logoutBtn">Logout</button></li>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('upload') }}" class="active">Upload</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
 
         </ul>
     </nav>

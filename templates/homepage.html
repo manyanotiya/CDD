@@ -4,24 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - CropCare</title>
-    <link rel="stylesheet" href="commonstyle.css"> 
-    <link rel="stylesheet" href="homepage.css">    
-</head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
 <body>
     <nav class="navbar">
         <div class="logo">CropCare 🌱</div>
         <ul class="nav-links">
-            <li><a href="homepage.html" class="active">Home</a></li>
-            <li><a href="login.html">Upload</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="{{ url_for('home')}}"  class="active">Home</a></li>
+            <li><a href="{{ url_for('upload') }}">Upload</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
         </ul>
     </nav>
 
     <header class="home-header">
         <h1>Protect Your Crops with Smart Disease Prediction!</h1>
         <p>Utilizing advanced AI technology to identify and predict crop diseases, ensuring healthier yields and sustainable farming.</p>
-        <a href="login.html" class="cta-button">Get Started</a>
+        <a href="{{ url_for('login') }}" class="cta-button">Get Started</a>
     </header>
 
     <section class="home-content">

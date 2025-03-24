@@ -4,11 +4,35 @@ import numpy as np
 from PIL import Image
 import io
 from flask_cors import CORS
-
+from flask import Flask, render_template
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS
+CORS(app)
+# Homepage route
+@app.route('/')
+def homepage():
+    return render_template('homepage.html')
 
+# Upload page route
+@app.route('/upload')
+def upload():
+    return render_template('upload.html')
+
+# About page route
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+# Contact page route
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
+# app = Flask(__name__)
 # Load both models
 models = {
     'pea': tf.keras.models.load_model('pea_model.keras'),

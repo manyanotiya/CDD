@@ -7,7 +7,7 @@ body {
 }
 .home-header {
     text-align: center;
-    background: url('static\agrimage.jpg') no-repeat center center/cover;
+    background: url('agrimage.jpg') no-repeat center center/cover;
     padding: 100px 20px;
     position: relative;
 }
